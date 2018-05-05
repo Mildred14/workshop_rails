@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  
+
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   # GET /topics
@@ -28,6 +28,7 @@ class TopicsController < ApplicationController
   # POST /topics
   # POST /topics.json
   def create
+
     @topic = Topic.new(topic_params)
 
     respond_to do |format|
@@ -67,7 +68,7 @@ class TopicsController < ApplicationController
   #TODO:REfactor - move to separate controller
 def upvote
   @topic=Topic.find(params[:id])
-  @topic.votes.create
+  @topic.votes.create(user_id: current_user.id)
   redirect_to topics_path
 end
   private
