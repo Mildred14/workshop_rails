@@ -61,7 +61,12 @@ class TopicsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  #TODO:REfactor - move to separate controller
+def upvote
+  @topic=Topic.find(params[:id])
+  @topic.votes.create
+  redirect_to topics_path
+end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_topic
