@@ -12,7 +12,8 @@
   </thead>
 
   <tbody>
-    <% @topics.each do |topic| %>
+
+    <% @orderer.each do |topic| %>
       <tr>
         <td><%= link_to topic.title, topic  %></td>
         <td><%= topic.description %></td>
@@ -20,7 +21,7 @@
         <td><%= button_to '+1', upvote_topic_path(topic), method: :post %></td>
         <td><%= link_to 'Show', topic %></td>
         <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-        
+
       </tr>
     <% end %>
   </tbody>
